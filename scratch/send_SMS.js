@@ -19,7 +19,7 @@
 			type: 'GET',
 			dataType: 'JSONP',
 			jsonpCallback: 'jsonp',
-			url: 'http://' + serverIp + ':8080?mode=scratch_normal&tel='+tel+'&msg=' + encoded,
+			url: 'http://' + serverIp + ':8080?mode=disctype_normal&tel='+tel+'&msg=' + encoded,
 			cache: false,
 			xhrFields: {
 			       	'withCredentials': true,
@@ -44,7 +44,7 @@
 			type: 'GET',
 			dataType: 'JSONP',
 			jsonpCallback: 'jsonp',
-			url: 'http://' + serverIp + ':8080?mode=scratch_warning&tel='+tel+'&msg=' + encoded,
+			url: 'http://' + serverIp + ':8080?mode=disctype_warn&tel='+tel+'&msg=' + encoded,
 			cache: false,
 			xhrFields: {
 			       	'withCredentials': true,
@@ -69,7 +69,7 @@
 			type: 'GET',
 			dataType: 'JSONP',
 			jsonpCallback: 'jsonp',
-			url: 'http://' + serverIp + ':8080?mode=scratch_info&tel='+tel+'&msg=' + encoded,
+			url: 'http://' + serverIp + ':8080?mode=disctype_info&tel='+tel+'&msg=' + encoded,
 			cache: false,
 			xhrFields: {
 			       	'withCredentials': true,
@@ -93,7 +93,7 @@
 			type: 'GET',
 			dataType: 'JSONP',
 			jsonpCallback: 'jsonp',
-			url: 'http://' + serverIp + ':8080?mode=scratch_warning&tel='+tel+'&msg=' + encoded,
+			url: 'http://' + serverIp + ':8080?mode=disctype_test&tel='+tel+'&msg=' + encoded,
 			cache: false,
 			xhrFields: {
 			       	'withCredentials': true,
