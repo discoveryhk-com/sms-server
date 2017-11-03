@@ -1,14 +1,16 @@
 (function(ext) {
 	var device = false;
-	var serverIp	= '';
+	var serverIp = '';
+	var serverPasswd = '';
 	ext._shutdown = function() {};
 	ext._getStatus = function() {
 		if(!device) return {status: 1, msg: 'Device not connected'};
 		return {status: 2, msg: 'Device connected'};
 	};
-    	ext.sms_server_ip = function(ip) {
+    	ext.sms_server_ip = function(ip, passwd) {
 		console.log('console IP before = ' + serverIp);
 		serverIp = ip;
+		serverPasswd = encodeURIComponent(passwd);
 		device = true;
 		console.log('console IP after = ' + serverIp);
 	};
@@ -19,7 +21,7 @@
 			type: 'GET',
 			dataType: 'JSONP',
 			jsonpCallback: 'jsonp',
-			url: 'http://' + serverIp + ':8080?mode=disctype_normal&tel='+tel+'&msg=' + encoded,
+			url: 'http://' + serverIp + ':8080?passwd=' + serverPasswd + '&mode=disctype_normal&tel='+tel+'&msg=' + encoded,
 			cache: false,
 			xhrFields: {
 			       	'withCredentials': true,
@@ -44,7 +46,7 @@
 			type: 'GET',
 			dataType: 'JSONP',
 			jsonpCallback: 'jsonp',
-			url: 'http://' + serverIp + ':8080?mode=disctype_warn&tel='+tel+'&msg=' + encoded,
+			url: 'http://' + serverIp + ':8080?passwd=' + serverPasswd + '&mode=disctype_warn&tel='+tel+'&msg=' + encoded,
 			cache: false,
 			xhrFields: {
 			       	'withCredentials': true,
@@ -69,7 +71,7 @@
 			type: 'GET',
 			dataType: 'JSONP',
 			jsonpCallback: 'jsonp',
-			url: 'http://' + serverIp + ':8080?mode=disctype_info&tel='+tel+'&msg=' + encoded,
+			url: 'http://' + serverIp + ':8080?passwd=' + serverPasswd + '&mode=disctype_info&tel='+tel+'&msg=' + encoded,
 			cache: false,
 			xhrFields: {
 			       	'withCredentials': true,
@@ -93,7 +95,7 @@
 			type: 'GET',
 			dataType: 'JSONP',
 			jsonpCallback: 'jsonp',
-			url: 'http://' + serverIp + ':8080?mode=disctype_test&tel='+tel+'&msg=' + encoded,
+			url: 'http://' + serverIp + ':8080?passwd=' + serverPasswd + '&mode=disctype_test&tel='+tel+'&msg=' + encoded,
 			cache: false,
 			xhrFields: {
 			       	'withCredentials': true,
@@ -120,7 +122,7 @@
 	};
 	var descriptor = {
 	blocks: [
-		[' ', 'Set SMS server IP %s', 'sms_server_ip', '']
+		[' ', 'Set SMS server IP %s and password %s', 'sms_server_ip', '', '']
 		,[' ', 'send normal sms tel:%s with message:%s', 'normalMsg', '', '']
 		,[' ', 'send alert sms tel:%s with message:%s', 'warningMsg', '', '']
 		,[' ', 'send information sms tel:%s with message:%s', 'infoMsg', '', '']
