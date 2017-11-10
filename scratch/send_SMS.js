@@ -66,10 +66,10 @@
 			}
 		});
 	};
-    	ext.infoMsg = function(telraw, msg) {
+    	ext.infomMsg = function(telRaw, msg) {
 		var encoded = encodeURIComponent(msg);
 		var tel = encodeURIComponent(telRaw);
-		console.log('info message: tel = ' + tel + ', msg = ' + encoded);
+		console.log('warning message: tel = ' + tel + ', msg = ' + encoded);
 		$.ajax({
 			type: 'GET',
 			dataType: 'JSONP',
@@ -126,9 +126,9 @@
 	var descriptor = {
 	blocks: [
 		[' ', 'Set SMS server IP %s and password %s', 'sms_server_ip', '', '']
+		,[' ', 'send information sms tel:%s with message:%s', 'infomMsg', '', '']
 		,[' ', 'send normal sms tel:%s with message:%s', 'normalMsg', '', '']
 		,[' ', 'send alert sms tel:%s with message:%s', 'warningMsg', '', '']
-		,[' ', 'send information sms tel:%s with message:%s', 'infoMsg', '', '']
 		//,['b', 'SMS setting ready', 'checkSMSserver']
 	],
 	url: 'https://www.discoveryhk.com'
