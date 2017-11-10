@@ -14,8 +14,9 @@
 		device = true;
 		console.log('console IP after = ' + serverIp);
 	};
-    	ext.normalMsg = function(tel, msg) {
+    	ext.normalMsg = function(telRaw, msg) {
 		var encoded = encodeURIComponent(msg);
+		var tel = encodeURIComponent(telRaw);
 		console.log('normal message: tel = ' + tel + ', msg = ' + encoded);
 		$.ajax({
 			type: 'GET',
@@ -39,8 +40,9 @@
 			}
 		});
 	};
-    	ext.warningMsg = function(tel, msg) {
+    	ext.warningMsg = function(telRaw, msg) {
 		var encoded = encodeURIComponent(msg);
+		var tel = encodeURIComponent(telRaw);
 		console.log('warning message: tel = ' + tel + ', msg = ' + encoded);
 		$.ajax({
 			type: 'GET',
@@ -64,8 +66,9 @@
 			}
 		});
 	};
-    	ext.infoMsg = function(tel, msg) {
+    	ext.infoMsg = function(telraw, msg) {
 		var encoded = encodeURIComponent(msg);
+		var tel = encodeURIComponent(telRaw);
 		console.log('info message: tel = ' + tel + ', msg = ' + encoded);
 		$.ajax({
 			type: 'GET',
